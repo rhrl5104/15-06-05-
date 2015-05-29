@@ -1,4 +1,6 @@
--- 테이블 생성
+
+
+-- 2. 테이블 생성
 create table board (
 
 	num 	 	 number 			primary key,
@@ -10,7 +12,7 @@ create table board (
 	attachment   varchar2(50)
 )
 
--- 시퀀스 생성
+-- 3. 시퀀스 생성
 create sequence board_seq
 
 
@@ -20,4 +22,6 @@ values(board_seq.nextval, '리진규', '홍홍', 'aa', default, default, '303.tx
 
 
 
-select * from board
+select * from board order by num desc
+
+delete from 

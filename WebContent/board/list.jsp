@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import = "java.util.*" %>
+<%@ page import = "board.dto.*" %>
+
 <!DOCTYPE html>
 
 <html>
 	<head>
 		<title>JSP/Servlet Example</title>
-		<link rel="Stylesheet" type="text/css" href="../css/bootstrap.css"></link>
+		<link rel="Stylesheet" type="text/css" href="./css/bootstrap.css"></link>
 	</head>
 	
 	<!-- 
@@ -31,7 +34,7 @@
 		
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
 		      <ul class="nav navbar-nav">
-		        <li><a href="write.jsp">글쓰기<span class="sr-only">(current)</span></a></li>
+		        <li><a href="writeForm.board">글쓰기<span class="sr-only">(current)</span></a></li>
 		        <li class="active"><a href="#">리스트</a></li>
 		      </ul>
 		    </div>
@@ -53,62 +56,29 @@
 		    </tr>
 		  </thead>
 		  <tbody>
+		  
+		  <%
+		  	List<Board> list = (List<Board>)request.getAttribute("list");		  	
+		  %>
+		  
+		  <% 
+		  	for(int i=0; i<list.size(); i++) {
+		  		Board board = list.get(i);	//꺼내오자 (board 타입)
+		  %>
+		  
 		    <tr>
-		      <td>1</td>
+		      <td><%= board.getNum() %></td>
 		      <td><a href="view.jsp">Column content</a></td>
 		      <td>Column content</td>
 		      <td>Column content</td>
 		      <td>Column content</td>
 		      <td>삭제</td>
 		    </tr>
-		    <tr>
-		      <td>2</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>삭제</td>
-		    </tr>
-		    <tr class="info">
-		      <td>3</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>삭제</td>
-		    </tr>
-		    <tr class="success">
-		      <td>4</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>삭제</td>
-		    </tr>
-		    <tr class="danger">
-		      <td>5</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>삭제</td>
-		    </tr>
-		    <tr class="warning">
-		      <td>6</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>삭제</td>
-		    </tr>
-		    <tr class="active">
-		      <td>7</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>삭제</td>
-		    </tr>
+		    
+		    <%
+		  		}
+		    %>
+		    
 		  </tbody>
 		  
 		  
