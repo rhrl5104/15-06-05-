@@ -29,7 +29,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="#">게시판관리</a>
+		      <a class="navbar-brand" href="index.jsp">게시판관리</a>
 		    </div>
 		
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
@@ -68,10 +68,11 @@
 		  
 		    <tr>
 		      <td><%= board.getNum() %></td>
-		      <td><a href="view.jsp">Column content</a></td>
-		      <td>Column content</td>
-		      <td>Column content</td>
-		      <td>Column content</td>
+		      <!-- 게시판 리스트 정보 뜨게 해주자 -->
+		      <td><a href="view.board?num=<%= board.getNum()%>"><%= board.getTitle() %></a></td>	
+		      <td><%=board.getName() %></td>
+		      <td><%=board.getWdate() %></td>
+		      <td><%=board.getHits() %></td>
 		      <td>삭제</td>
 		    </tr>
 		    

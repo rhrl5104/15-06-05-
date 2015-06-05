@@ -16,6 +16,7 @@ create table board (
 create sequence board_seq
 
 
+
 insert into board
 values(board_seq.nextval, '리진규', '홍홍', 'aa', default, default, '303.txt')
 
@@ -24,4 +25,4 @@ values(board_seq.nextval, '리진규', '홍홍', 'aa', default, default, '303.tx
 
 select * from board order by num desc
 
-delete from 
+delete from board

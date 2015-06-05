@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="board.dto.*" %>
 <!DOCTYPE html>
 
 <html>
@@ -18,7 +19,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="#">게시판관리</a>
+		      <a class="navbar-brand" href="index.jsp">게시판관리</a>
 		    </div>
 		
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
@@ -31,35 +32,41 @@
 		</nav>
 		
 		<!-- 게시판 글쓰기  시작  -->
-		<form class="form-horizontal">
+		
+		<%
+			Board board = (Board)request.getAttribute("board"); 
+		%>
+		
+		
+		<form class="form-horizontal" enctype="multipart/form-data">
 		  <fieldset>
 		    <legend>게시판 수정 </legend>
 		    
 		    <div class="form-group">
 		      <label for="inputEmail" class="col-lg-2 control-label">이름 : </label>
 		      <div class="col-lg-10">
-		        <input type="text" class="form-control" id="subject" placeholder="이름을 입력하세요.">
+		        <input type="text" value="<%= board.getName()%>" class="form-control" id="subject" placeholder="이름을 입력하세요.">
 		      </div>
 		    </div>
 		    
 		    <div class="form-group">
 		      <label for="inputEmail" class="col-lg-2 control-label">제목 : </label>
 		      <div class="col-lg-10">
-		        <input type="text" class="form-control" id="subject" placeholder="제목을 입력하세요.">
+		        <input type="text" value="<%= board.getTitle()%>" class="form-control" id="subject" placeholder="제목을 입력하세요.">
 		      </div>
 		    </div>
 		   
 		    <div class="form-group">
 		      <label for="textArea" class="col-lg-2 control-label">내용 : </label>
 		      <div class="col-lg-10">
-		        <textarea class="form-control" rows="10" id="textArea"></textarea>
+		        <textarea class="form-control" value="<%= board.getContent()%>" rows="10" id="textArea"></textarea>
 		      </div>
 		    </div>
 		    
 		    <div class="form-group">
 		      <label for="file" class="col-lg-2 control-label">첨부파일 : </label>
 		      <div class="col-lg-10">
-		        <input type="file" class="form-control" id="file" placeholder="파일을 선택하세요.">
+		        <input type="file"  class="form-control" id="file" placeholder="파일을 선택하세요.">
 		      </div>
 		    </div>
 		    

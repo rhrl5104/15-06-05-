@@ -41,7 +41,7 @@ public class BoardDAO {
 	//기능 추가
 	//글쓰기
 	public int insertBoard(Board board) {
-		String sql = "insert into board values(board_seq.nextval, ?, ?, ?, default, default, 'file')";
+		String sql = "insert into board values(board_seq.nextval, ?, ?, ?, default, default, ?)";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -49,6 +49,7 @@ public class BoardDAO {
 			pstmt.setString(1, board.getName());
 			pstmt.setString(2, board.getTitle());
 			pstmt.setString(3, board.getContent());
+			pstmt.setString(4, board.getAttachment());
 			
 			int result = pstmt.executeUpdate();	//실행
 			return result;
@@ -86,16 +87,74 @@ public class BoardDAO {
 					
 					//리스트에 값을 담는 것.
 					list.add(board);
-				}
-				
-				
+				}				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-		
+			}		
 		return list;
 	}
+	
+	
+	
+	
+	
+	
+	
+	// 상세보기
+	public Board seletOnBoardByNum(int num) {
+		String sql = "select * from board where num=?";
+		Board board = new Board();
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				//표시해줄 것 입력
+				board.setNum(rs.getInt("num"));
+				board.setName(rs.getString("name"));
+				board.setTitle(rs.getString("title"));
+				board.setContent(rs.getString("content"));
+				board.setAttachment(rs.getString("attachment"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return board;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	// 조회수 증가
+	public void updateHits(int num) {
+		String sql = "update board set hits = hits + 1 where num=?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	public int deleteBoard(int num) {
@@ -105,20 +164,24 @@ public class BoardDAO {
 	
 	
 	public int updateBoard(Board board) {
+		
 		return 0;
-	}
-	
-	
-	public void updateHits(int num) {
-	}
-	
-	
-	public Board seletOnBoardByNum(int num) {
-		return null;
-	}
-	
-	
 
+	}
+	
+	
+	/*
+	 
+	- 수정하기
+	  2가지 기능해야 한다.
+	  업데이트폼 액션
+ 	  업데이트 액션
+ 	  따라서 write와 같지만, sql문장이 달라진다. update로
+ 	  
+ 	  또한, 이미 입력된 정보가 써 있어야 되 
+ 	  update.jsp 에서
+	
+	*/
 	
 	
 

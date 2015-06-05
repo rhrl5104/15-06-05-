@@ -19,7 +19,7 @@ public class BoardListAction implements Action {
 		System.out.println("BoardListAction 도착");
 		
 		BoardDAO dao = new BoardDAO();
-		List<Board> list = dao.selectAllBoards();
+		List<Board> list = dao.selectAllBoards(); 
 		
 		request.setAttribute("list", list);
 		
@@ -33,5 +33,6 @@ public class BoardListAction implements Action {
 		
 		dispatcher.forward(request, response); //예외처리 하자, throws
 	}
+
 
 }

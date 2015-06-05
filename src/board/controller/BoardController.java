@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.action.Action;
+import board.action.BoardDeleteAction;
 import board.action.BoardListAction;
+import board.action.BoardUpdateAction;
+import board.action.BoardViewAction;
 import board.action.BoardWriteAction;
 import board.action.BoardWriteFormAction;
 
@@ -99,6 +102,33 @@ public class BoardController extends HttpServlet {
 			action.execute(request, response);
 
 		}
+		
+		//뷰
+		else if(command.equals("/view.board")) {
+			System.out.println("BoardController 뷰 도착");
+			Action action = new BoardViewAction();
+			action.execute(request, response);
+			
+		}		
+		
+		
+		//딜리트
+		else if(command.equals("/delete.board")) {
+			System.out.println("BoardController 딜리트 도착");
+			Action action = new BoardDeleteAction();
+			action.execute(request, response);
+			
+		}		
+		
+		
+		//업데이트
+		else if(command.equals("/update.board")) {
+			System.out.println("BoardController 업데이트 도착");
+			Action action = new BoardUpdateAction();
+			action.execute(request, response);
+			
+		}				
+		
 	}
 
 }
