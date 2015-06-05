@@ -73,7 +73,7 @@
 		      <td><%=board.getName() %></td>
 		      <td><%=board.getWdate() %></td>
 		      <td><%=board.getHits() %></td>
-		      <td>삭제</td>
+		      <td><a href="delete.board?num=<%= board.getNum()%>">삭제</a></td>
 		    </tr>
 		    
 		    <%

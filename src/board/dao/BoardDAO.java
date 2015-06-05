@@ -158,6 +158,15 @@ public class BoardDAO {
 	
 	
 	public int deleteBoard(int num) {
+		String sql = "delete board where num=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return num;
 	}
 	
